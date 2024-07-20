@@ -1,12 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import bcrypt from "bcrypt";
 
 const eventSchema=new Schema({
     event_host_name:{
-        type:String,
-        required:true,
-        trim: true,
-        index: true
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
     event_name:{
         type:String,
@@ -46,16 +44,10 @@ const eventSchema=new Schema({
         type:String,
         required:true
     },
-    offers:{
-        type:Array,
-    },
-})
-
-eventSchema.pre("save", async function (next) {
-    if(!this.isModified("password")) return next();
-
-    this.password = await bcrypt.hash(this.password, 10)
-    next()
+    inqury: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Inqury'
+    }],
 })
 
 export const Event= mongoose.model("Event",eventSchema)

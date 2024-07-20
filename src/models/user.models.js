@@ -19,9 +19,6 @@ const userSchema=new Schema({
         trim: true, 
     },
 
-    profileUrl:{
-        type: String,
-    },
 
     profileImage:{
         type: String,
@@ -36,26 +33,14 @@ const userSchema=new Schema({
         type: String
     },
 
-    teams:{
-
-        artisUser:{
-
-            displayName: {
-                type: String,
-                required: true,
-                unique: true
-            },
-
-            category: {
-                type: String,
-            },
-
-            events: {
-                type: String,
-            }, 
-        },
+    category: {
+        type: Array,
     },
-
+    
+    events: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Event'
+    }],
 },
 
 {
