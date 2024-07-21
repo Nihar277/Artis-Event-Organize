@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import { User } from "./user.models";
 import { Event } from "./event.models";
 
-const InqurySchema=new Schema({
+const InquireSchema=new Schema({
     event_name:{
         type: Schema.Types.ObjectId,
         ref: 'Event',
@@ -36,4 +36,4 @@ const InqurySchema=new Schema({
    }
 })
 
-export const Inqury= mongoose.model("Inqury",InqurySchema)
+export const Inquire= mongoose.model("Inquire",InquireSchema)
